@@ -22,9 +22,9 @@ function nowServing(currentLineList) {
    else {
      var message="The line is currently:"
      for (var i=0;i<(line.length-1);i++) {
-       message.push(` ${i+1}. ${line[i]},`);
+       message+=` ${i+1}. ${line[i]},`;
      }
-     message.push(` ${line.length}. ${line[line.length-1]}`);
+     message+=` ${line.length}. ${line[line.length-1]}`;
      return message;
    }
  } 
