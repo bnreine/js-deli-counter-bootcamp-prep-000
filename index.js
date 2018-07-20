@@ -9,39 +9,29 @@ function nowServing(currentLineList) {
     return `There is nobody waiting to be served!`;
   }
   else {
-    return `Currently serving ${currentLineList[0]}.`
+    var servingNow=currentLineList[0];
     currentLineList.shift();
+    return `Currently serving ${servingNow}.`;
   }
 }
   
-  
-  /*
-  else {
-    return `Currently serving ${currentLineList[0]}.`
-    currentLineList.shift();
-  }
- */
- 
-
-
-
-
+ function currentLine(line) {
+   if (line.length===0) {
+     return "The line is currently empty.";
+   }
+   else {
+     var message="The line is currently:"
+     for (var i=0;i<(line.length-1);i++) {
+       message.push(` ${i+1}. ${line[i]},`);
+     }
+     message.push(` ${line.length}. ${line[line.length-1]}`);
+     return message;
+   }
+ } 
 
 
 /*
-  describe('nowServing', () => {
-    it('returns the line is empty when no one is on line', () => {
-      expect(nowServing([])).toEqual("There is nobody waiting to be served!");
-    });
-
-    it('returns an announcement about the person it is serving, and shifts the line', () => {
-      const deliLine = ["Steven", "Blake", "Avi"]
-      expect(nowServing(deliLine)).toEqual("Currently serving Steven.");
-      expect(deliLine).toEqual(["Blake", "Avi"]);
-    });
-  });
-
-  describe('currentLine(line)', () => {
+describe('currentLine(line)', () => {
     it('returns "The line is currently empty." if no one is in line', () => {
       expect(currentLine([])).toEqual("The line is currently empty.");
     });
